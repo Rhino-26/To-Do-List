@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethereal Pro - Digital Flow</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Login View -->
+    <div id="login-view" class="view active h-screen w-full flex">
+        <div class="login-left">
+            <div class="login-branding">
+                <div class="logo"><i class="fa-solid fa-braille"></i> Ethereal Pro</div>
+                <h1>Curate Your <br><span class="text-gradient">Digital Flow.</span></h1>
+                <p>Step back into your high-end studio. Synchronize your tasks, time, and focus in a workspace designed for the modern curator.</p>
+                <div class="login-stats">
+                    <div>
+                        <h3>12k+</h3>
+                        <p>ACTIVE CURATORS</p>
+                    </div>
+                    <div>
+                        <h3>99.9%</h3>
+                        <p>UPTIME STATUS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="login-footer">
+                <span>TERMS OF SERVICE</span>
+                <span>PRIVACY PROTOCOL</span>
+            </div>
+        </div>
+        <div class="login-right">
+            <div class="login-card glass-card">
+                <h2>Welcome back</h2>
+                <p class="subtitle">ENTER YOUR CREDENTIALS TO SYNC</p>
+                
+                <form id="login-form">
+                    <div class="form-group">
+                        <label>USERNAME / EMAIL</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="email" id="login-email" placeholder="curator@ethereal.pro" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="label-row">
+                            <label>SECURITY KEY</label>
+                            <a href="#" class="forgot-link">FORGOT KEY?</a>
+                        </div>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="login-password" placeholder="••••••••••••" required>
+                            <i class="fa-solid fa-eye action-icon" id="toggle-password"></i>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary w-full">Sign In <i class="fa-solid fa-arrow-right"></i></button>
+                    
+                    <div class="divider">
+                        <span>ALTERNATIVE GATEWAYS</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button type="button" class="btn-social"><img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google"> Google</button>
+                        <button type="button" class="btn-social"><i class="fa-brands fa-apple"></i> Apple</button>
+                    </div>
+                </form>
+                <div class="join-link">
+                    New to the studio? <a href="#">Join the Collective</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashboard-view" class="view hidden">
+        
+        <!-- Mobile Header (Visible only on small screens) -->
+        <header class="mobile-header">
+            <div class="logo"><i class="fa-solid fa-braille"></i> Ethereal</div>
+            <button id="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Digital+Curator&background=random&color=fff" alt="User">
+                    <div class="user-info">
+                        <h4>Digital Curator</h4>
+                        <p>DEEP WORK MODE</p>
+                    </div>
+                </div>
+                <nav class="main-nav">
+                    <a href="#" class="nav-item active" data-target="tasks-page">
+                        <i class="fa-regular fa-circle-check"></i> TASKS
+                    </a>
+                    <a href="#" class="nav-item" data-target="clock-page">
+                        <i class="fa-regular fa-clock"></i> WORLD CLOCK
+                    </a>
+                    <a href="#" class="nav-item" data-target="settings-page">
+                        <i class="fa-solid fa-gear"></i> SETTINGS
+                    </a>
+                </nav>
+            </div>
+            
+            <div class="sidebar-bottom">
+                <div class="plan-status">
+                    <p>Plan Status</p>
+                    <h4>Ethereal Pro</h4>
+                </div>
+                <button id="logout-btn" class="nav-item logout-btn mt-2">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> LOGOUT
+                </button>
+            </div>
+            <button id="sidebar-close-btn" class="mobile-only"><i class="fa-solid fa-xmark"></i></button>
+        </aside>
+        
+        <main class="main-content">
+            
+            <!-- Tasks Page -->
+            <section id="tasks-page" class="page active">
+                <header class="page-header">
+                    <h2>Tasks</h2>
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="task-search" placeholder="Find a task...">
+                    </div>
+                    <div class="header-actions">
+                        <button class="theme-toggle" id="theme-toggle-tasks"><i class="fa-solid fa-moon"></i></button>
+                        <div class="progress-container">
+                            <span id="task-progress-text">0% Complete</span>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" id="task-progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                
+                <div class="task-input-container">
+                    <input type="text" id="new-task-input" placeholder="What's the next big thing?">
+                    <button id="add-task-btn" class="btn-primary"><i class="fa-solid fa-plus"></i> Add Task</button>
+                </div>
+                
+                <div class="task-filters-row">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">All</button>
+                        <button class="filter-tab" data-filter="pending">Pending</button>
+                        <button class="filter-tab" data-filter="completed">Completed</button>
+                    </div>
+                    <div class="shared-with">
+                        <div class="avatars">
+                            <img src="https://ui-avatars.com/api/?name=A&background=random" alt="Avatar">
+                            <img src="https://ui-avatars.com/api/?name=B&background=random" alt="Avatar">
+                            <div class="avatar-more">+4</div>
+                        </div>
+                        <span>Shared with the Design Team</span>
+                    </div>
+                </div>
+                
+                <div class="tasks-grid" id="tasks-container">
+                    <!-- Task cards will be generated here by JS -->
+                </div>
+            </section>
+            
+            <!-- Clock Page -->
+            <section id="clock-page" class="page hidden">
+                <header class="page-header">
+                    <div>
+                        <h2>Global Pulse</h2>
+                        <p class="subtitle">Coordinating across time and space.</p>
+                    </div>
+                    <button class="btn-primary"><i class="fa-solid fa-plus"></i> Add Region</button>
+                </header>
+
+                <div class="hero-clock glass-card">
+                    <div class="hero-clock-content">
+                        <p class="text-center">LOCAL TIME • LONDON</p>
+                        <h1 class="main-time" id="main-clock">14:42<span class="am-pm">PM</span></h1>
+                        <div class="clock-details">
+                            <div>
+                                <p>DATE</p>
+                                <h4 id="main-date">Oct 24, 2023</h4>
+                            </div>
+                            <div>
+                                <p>TIMEZONE</p>
+                                <h4>GMT +1</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-clocks-grid">
+                    <!-- Dynamically generated clocks -->
+                    <div class="clock-card" data-tz="Asia/Colombo">
+                        <div class="card-top">
+                            <div>
+                                <h3>Sri Lanka</h3>
+                                <p>COLOMBO</p>
+                            </div>
+                            <i class="fa-solid fa-moon icon-weather"></i>
+                        </div>
+                        <h2 class="region-time">--:--</h2>
+                        <p class="time-diff">Calculating...</p>
+                    </div>
+
+                    <div class="clock-card" data-tz="America/New_York">
+                        <div class="card-top">
+                            <div>
+                                <h3>USA</h3>
+                                <p>NEW YORK</p>
+                            </div>
+                            <i class="fa-regular fa-sun icon-weather"></i>
+                        </div>
+                        <h2 class="region-time">--:--</h2>
+                        <p class="time-diff">Calculating...</p>
+                    </div>
+
+                    <div class="clock-card" data-tz="Europe/London">
+                        <div class="card-top">
+                            <div>
+                                <h3>UK</h3>
+                                <p>LONDON</p>
+                            </div>
+                            <i class="fa-regular fa-sun icon-weather"></i>
+                        </div>
+                        <h2 class="region-time">--:--</h2>
+                        <p class="time-diff">Calculating...</p>
+                    </div>
+
+                    <div class="clock-card" data-tz="Asia/Kolkata">
+                        <div class="card-top">
+                            <div>
+                                <h3>India</h3>
+                                <p>MUMBAI</p>
+                            </div>
+                            <i class="fa-solid fa-moon icon-weather"></i>
+                        </div>
+                        <h2 class="region-time">--:--</h2>
+                        <p class="time-diff">Calculating...</p>
+                    </div>
+                </div>
+
+                <div class="clock-footer-grid">
+                    <div class="sync-card glass-card">
+                        <h3>Synchronization Status</h3>
+                        <div class="flex-bw">
+                            <p>GLOBAL SYNC LATENCY</p>
+                            <p>0.02ms</p>
+                        </div>
+                        <div class="latency-bar"><div class="latency-fill"></div></div>
+                        <h2 class="text-right mt-2 success-text">Stable</h2>
+                        <p class="text-right small-text">STRATUM-1 SOURCE</p>
+                    </div>
+                    <div class="meeting-card">
+                        <i class="fa-solid fa-globe"></i>
+                        <h3>Next Meeting</h3>
+                        <p>NYC/London Alignment</p>
+                        <span class="badge">IN 2H 15M</span>
+                    </div>
+                </div>
+
+            </section>
+            
+            <!-- Settings Page -->
+            <section id="settings-page" class="page hidden">
+                <header class="page-header">
+                    <div>
+                        <h2>Control Center</h2>
+                        <p class="subtitle">Orchestrate your digital environment and refine your curated workspace experience.</p>
+                    </div>
+                </header>
+
+                <div class="settings-grid">
+                    <div class="settings-main">
+                        <div class="settings-card glass-card">
+                            <div class="card-header">
+                                <div>
+                                    <h3>Account Settings</h3>
+                                    <p>SECURITY & IDENTITY</p>
+                                </div>
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group form-half">
+                                    <label>Display Name</label>
+                                    <input type="text" value="Julian Thorne" class="input-filled">
+                                </div>
+                                <div class="form-group form-half">
+                                    <label>Email Address</label>
+                                    <input type="email" value="julian@ethereal.pro" class="input-filled">
+                                </div>
+                            </div>
+                            <div class="actions mt-3">
+                                <button class="btn-primary mr-2">Update Profile</button>
+                                <button class="btn-secondary">Change Password</button>
+                            </div>
+                        </div>
+
+                        <div class="settings-card glass-card">
+                            <div class="card-header">
+                                <div>
+                                    <h3>Theme Customization</h3>
+                                    <p>VISUAL EXPERIENCE</p>
+                                </div>
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <div class="theme-options">
+                                <div class="theme-toggles">
+                                    <div class="toggle-row">
+                                        <div class="toggle-info">
+                                            <i class="fa-solid fa-moon"></i>
+                                            <div>
+                                                <h4>Deep Obsidian Mode</h4>
+                                                <p>Low strain, high focus environment.</p>
+                                            </div>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="dark-mode-toggle" checked>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <div class="toggle-row">
+                                        <div class="toggle-info">
+                                            <i class="fa-brands fa-figma"></i>
+                                            <div>
+                                                <h4>Atmospheric Depth</h4>
+                                                <p>Enable glassmorphism and blur effects.</p>
+                                            </div>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="accent-palette">
+                                    <p>Accent Palette</p>
+                                    <div class="colors">
+                                        <div class="color-swatch active" style="background:#a5b4fc;"></div>
+                                        <div class="color-swatch" style="background:#d8b4e2;"></div>
+                                        <div class="color-swatch" style="background:#a7f3d0;"></div>
+                                        <div class="color-swatch" style="background:#818cf8;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-sidebar">
+                        <div class="settings-card glass-card notifications-card">
+                            <div class="card-header">
+                                <div>
+                                    <h3>Notifications</h3>
+                                    <p>COMMUNICATION PULSE</p>
+                                </div>
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
+                            <div class="toggle-row mini">
+                                <div class="toggle-info">
+                                    <div>
+                                        <h4>System Alerts</h4>
+                                        <p>Maintenance and security updates.</p>
+                                    </div>
+                                </div>
+                                <label class="switch mini-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="toggle-row mini">
+                                <div class="toggle-info">
+                                    <div>
+                                        <h4>Curated Digests</h4>
+                                        <p>Weekly task and world clock summaries.</p>
+                                    </div>
+                                </div>
+                                <label class="switch mini-switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="toggle-row mini">
+                                <div class="toggle-info">
+                                    <div>
+                                        <h4>Deep Work Reminders</h4>
+                                        <p>Intelligent prompts to focus.</p>
+                                    </div>
+                                </div>
+                                <label class="switch mini-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <button class="btn-secondary w-full mt-3">CONFIGURE EMAIL RULES</button>
+                        </div>
+
+                        <div class="settings-card glass-card concierge-card">
+                            <i class="fa-solid fa-award icon-large"></i>
+                            <h3>Ethereal Concierge</h3>
+                            <p>Your personalized assistant is ready to help you optimize your curator settings.</p>
+                            <a href="#" class="arrow-link mt-2">Start Consultation <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Welcome Overlay -->
+    <div id="welcome-overlay" class="welcome-overlay hidden">
+        <h1 class="welcome-text text-gradient" id="welcome-message">Welcome</h1>
+    </div>
+
+    <!-- Modal for editing task -->
+    <div id="edit-task-modal" class="modal-overlay hidden">
+        <div class="modal-content glass-card">
+            <h3>Edit Task</h3>
+            <input type="text" id="edit-task-input-text" class="input-filled mt-2" placeholder="Task description">
+            <div class="modal-actions mt-3">
+                <button type="button" class="btn-secondary" id="cancel-edit-btn">Cancel</button>
+                <button type="button" class="btn-primary" id="save-edit-btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
